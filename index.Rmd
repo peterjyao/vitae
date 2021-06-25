@@ -1,7 +1,7 @@
 ---
-title: "cv"
+title: "Personal Site of Peter J. Yao"
 description: |
-  Welcome to the website. I hope you enjoy it!
+  Placeholder text
 site: distill::distill_website
 ---
 

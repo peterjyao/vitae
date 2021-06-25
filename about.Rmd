@@ -1,9 +1,16 @@
 ---
-title: "About this site"
+title: "About"
 description: |
-  Some additional details about the website
+  placeholder
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+* QbD
+* misc ggplot
+* base R
+* photostability 
+* qutebrowser
+* vim, tmux with git-bash (mintty, scoop...)
