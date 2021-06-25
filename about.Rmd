@@ -11,6 +11,9 @@ knitr::opts_chunk$set(echo = FALSE)
 * QbD
 * misc ggplot
 * base R
-* photostability 
+* photostability
 * qutebrowser
 * vim, tmux with git-bash (mintty, scoop...)
+* yoctopuce
+* flow sensors (maybe...)
+* sterile filtration
