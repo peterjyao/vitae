@@ -1,6 +1,6 @@
 ---
 title: About Me
-image: "assets/peter.jpg"
+image: "assets/peter.png"
 links:
   - label: LinkedIn
     url: "https://linkedin.com/in/peterjyao"
