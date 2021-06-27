@@ -4,8 +4,6 @@ image: "assets/peter.png"
 links:
   - label: LinkedIn
     url: "https://linkedin.com/in/peterjyao"
-  - label: GitHub
-    url: "https://github.com/peterjyao"
   - label: Email
     url: "mailto:peterjyao@gmail.com"
 output:
