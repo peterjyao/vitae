@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 * photostability
 * qutebrowser
 * vim, tmux with git-bash (mintty, scoop...)
+  - getting tmux on git-bash windows
 * yoctopuce
 * flow sensors (maybe...)
 * sterile filtration
