@@ -1,5 +1,5 @@
 ---
-title: "Personal Site of Peter J. Yao"
+title: "Main"
 description: |
   Placeholder text
 site: distill::distill_website
