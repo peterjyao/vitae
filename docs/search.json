@@ -5,23 +5,23 @@
       "title": "About",
       "description": "placeholder",
       "author": [],
-      "contents": "\nQbD\nmisc ggplot\nbase R\nphotostability\nqutebrowser\nvim, tmux with git-bash (mintty, scoop…)\nyoctopuce\nflow sensors (maybe…)\nsterile filtration\n\n\n\n",
-      "last_modified": "2021-06-27T00:31:54+02:00"
+      "contents": "\r\nvifm, vim\r\npython, pygal\r\nQbD\r\nmisc ggplot\r\nbase R\r\nphotostability\r\nqutebrowser\r\nvim, tmux with git-bash (mintty, scoop…)\r\ngetting tmux on git-bash windows\r\n\r\nyoctopuce\r\nflow sensors (maybe…)\r\nsterile filtration\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-26T10:30:49+02:00"
     },
     {
       "path": "index.html",
       "title": "Personal Site of Peter J. Yao",
       "description": "Placeholder text\n",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2021-06-27T00:31:55+02:00"
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2021-07-26T10:30:49+02:00"
     },
     {
       "path": "landing.html",
       "title": "About Me",
       "author": [],
-      "contents": "\n\n          \n          \n          cv\n          \n          \n          Home\n          About\n          Landing\n          ☰\n          \n          \n      \n        \n          \n            \n              \n            \n              About Me\n            \n            \n              \n                \n                    \n                      \n                        LinkedIn\n                      \n                    \n                  \n                                    \n                    \n                      \n                        GitHub\n                      \n                    \n                  \n                                    \n                    \n                      \n                        Email\n                      \n                    \n                  \n                                  \n            \n          \n        \n        \n        \n          \n            \n            Bio\n            placeholder\n            \n            \n            Education\n            placeholder\n            \n            \n            Experience\n            placeholder\n            \n          \n        \n      \n    \n\n    \n      \n        \n          \n            \n              \n            \n              About Me\n            \n            \n              \n                \n                                    \n                    \n                      LinkedIn\n                    \n                  \n                                    \n                    \n                      GitHub\n                    \n                  \n                                    \n                    \n                      Email\n                    \n                  \n                                  \n              \n            \n            \n              \n              Bio\n              placeholder\n              \n              \n              Education\n              placeholder\n              \n              \n              Experience\n              placeholder\n              \n            \n        \n      \n    \n\n    \n    \n    ",
-      "last_modified": "2021-06-27T00:31:55+02:00"
+      "contents": "\r\n\r\n          \r\n          \r\n          cv\r\n          \r\n          \r\n          Home\r\n          About\r\n          Landing\r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              About Me\r\n            \r\n            \r\n              \r\n                \r\n                    \r\n                      \r\n                        LinkedIn\r\n                      \r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      \r\n                        Email\r\n                      \r\n                    \r\n                  \r\n                                  \r\n            \r\n          \r\n        \r\n        \r\n        \r\n          \r\n            \r\n            Bio\r\n            placeholder\r\n            \r\n            \r\n            Education\r\n            placeholder\r\n            \r\n            \r\n            Experience\r\n            placeholder\r\n            \r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n      \r\n        \r\n          \r\n            \r\n              \r\n            \r\n              About Me\r\n            \r\n            \r\n              \r\n                \r\n                                    \r\n                    \r\n                      LinkedIn\r\n                    \r\n                  \r\n                                    \r\n                    \r\n                      Email\r\n                    \r\n                  \r\n                                  \r\n              \r\n            \r\n            \r\n              \r\n              Bio\r\n              placeholder\r\n              \r\n              \r\n              Education\r\n              placeholder\r\n              \r\n              \r\n              Experience\r\n              placeholder\r\n              \r\n            \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
+      "last_modified": "2021-07-26T10:30:50+02:00"
     }
   ],
   "collections": []

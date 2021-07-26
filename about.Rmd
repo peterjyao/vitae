@@ -8,6 +8,8 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+* vifm, vim
+* python, pygal
 * QbD
 * misc ggplot
 * base R
