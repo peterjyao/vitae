@@ -1,5 +1,5 @@
 name: "."
-title: "Personal Site of Peter Yao"
+title: "Peter Yao"
 description: |
   cv
 output_dir: "docs"
@@ -9,6 +9,6 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-    - text: "Landing"  
-      href: landing.html
+    - text: "Blog"
+      href: blog.html
 output: distill::distill_article
