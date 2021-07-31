@@ -4,10 +4,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto Slab";
 }
 
-h6 {
-  text-align: center;
-}
-
 body {
   font-family: "Roboto Slab";
+  background-color: #f5e9dd;
 }

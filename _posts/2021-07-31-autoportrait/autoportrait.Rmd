@@ -1,0 +1,60 @@
+---
+title: "autoportrait"
+description: Documenting how this blog was set up
+author: Peter Yao
+date: 07-31-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This blog was set up following the instructions from [Alison Hill](https://distillery.rbind.io/posts/2021-03-16-postcards-distill/).
+To make the rest of the site match the [About Me](https://peterjyao.github.io/vitae/index.html) page better (created with the [postcards](https://github.com/seankross/postcards) package), I added a bit to the site `styles.css`, which I expect I will play with more in the future.
+
+```{css, echo=TRUE}
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto Slab";
+}
+
+body {
+  font-family: "Roboto Slab";
+  background-color: #f5e9dd;
+}
+```
+
+At the moment there is a slight difference in how the navbar looks on the pages.
+Hopefully I can figure out how to fix that at some point.
+
+I wanted to try to use the same data source I used for [my CV](https://peterjyao.github.io/vitae/assets/cv.pdf), which I partially made using the [vitae](https://github.com/mitchelloharawild/vitae/) package--I say partially, because I ended up fine tuning it directly in the LaTeX file.
+It's a bit hacky but works.
+Below is for the "Experience" section.
+
+```{r demo, echo=TRUE, eval=FALSE}
+library("glue")
+
+data_source_root <- "https://raw.githubusercontent.com/peterjyao/cv/main/data"
+
+experience <- read.csv(url(glue("{data_source_root}/experience.csv")))
+
+# fix the date formatting
+experience$dates <- gsub("\'", "20", experience$dates)
+experience$dates <- gsub("-", " - ", experience$dates)
+
+experience$description_formatted <- glue(
+    .envir = experience,
+    "**{role}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
+    "*{org}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
+    "{description}",
+    .sep = "<br>"
+  )
+
+cat(paste(experience$description_formatted, collapse = "<br><br>"))
+```
+
+I used similar code for the "Education" and "Languages" section, so I should probably make a function out of it.

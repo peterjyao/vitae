@@ -8,7 +8,7 @@ links:
     url: "mailto:peterjyao@gmail.com"
   - label: Print CV
     url: "assets/cv.pdf"
-output: postcards::trestles
+output: postcards::solana
 site: distill::distill_website
 ---
 
@@ -28,7 +28,7 @@ education <- read.csv(url(glue("{data_source_root}/education.csv")))
 languages <- read.csv(url(glue("{data_source_root}/languages.csv")))
 ```
 
-## Experience
+### Experience
 
 ```{r experience}
 experience$dates <- gsub("\'", "20", experience$dates) 
@@ -36,8 +36,8 @@ experience$dates <- gsub("-", " - ", experience$dates)
 
 experience$description_formatted <- glue(
     .envir = experience,
-    "**{role}**, {dates}",
-    "*{org}*, {place}",
+    "**{role}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
+    "*{org}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
     "{description}",
     .sep = "<br>"
   )
@@ -45,13 +45,13 @@ experience$description_formatted <- glue(
 cat(paste(experience$description_formatted, collapse = "<br><br>"))
 ```
 
-## Education
+### Education
 
 ```{r education}
 education$description_formatted <- glue(
     .envir = education,
-    "**{degree}**, {dates}",
-    "*{institution}*, {place}",
+    "**{degree}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
+    "*{institution}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
     "{thesis}",
     .sep = "<br>"
   )
@@ -59,13 +59,13 @@ education$description_formatted <- glue(
 cat(paste(education$description_formatted, collapse = "<br><br>"))
 ```
 
-## Languages
+### Languages
 
 ```{r languages}
 languages$description_formatted <- glue(
     .envir = languages,
-    "*{language}*, {level}"
+    "*{language}*: {level}"
   )
 
-cat(paste(languages$description_formatted, collapse = "<br>"))
+cat(paste(languages$description_formatted, collapse = "&nbsp;&nbsp;|&nbsp;&nbsp;"))
 ```

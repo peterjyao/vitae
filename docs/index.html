@@ -8,8 +8,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
-    <style type="text/css">body {font-family: 'Roboto Slab', serif;}</style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style type="text/css">body {font-family: 'Roboto Mono', serif;}</style>
+
+    <style>
+      @media screen and (min-width: 768px) {
+        .container {
+          width: 768px;
+        }
+      }
+
+      body {
+        background-color: #f5e9dd;
+      }
+    </style>
 
     <title>Peter YAO</title>
 
@@ -371,12 +383,9 @@
             font-family: "Roboto Slab";
           }
 
-          h6 {
-            text-align: center;
-          }
-
           body {
             font-family: "Roboto Slab";
+            background-color: #f5e9dd;
           }
 
           </style>
@@ -410,72 +419,66 @@
           <!--radix_placeholder_site_before_body-->
           <!--/radix_placeholder_site_before_body-->
     
-    <div class="container-fluid d-none d-lg-block d-xl-block">
-      <div class="d-flex row flex-row vh-100">
-        <div class="d-flex flex-column col-5 align-items-center text-center align-self-center">
-          <div class="mx-auto text-center">
-            <div class="p-3">
-              <img src=assets/peter.png style="height:15rem" class="rounded">
-            </div>
-            <div class="p-2">
-              <h1>Peter YAO</h1>
-            </div>
-            <hr style="width:60%;"/>
-            <div class="p-2">
-              <div id="icon-list">
-                <ul class="list-inline">
-                                    <li class="list-inline-item">
-                    <a href=https://linkedin.com/in/peterjyao>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        LinkedIn
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=mailto:peterjyao@gmail.com>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        Email
-                      </button>
-                    </a>
-                  </li>
-                                    <li class="list-inline-item">
-                    <a href=assets/cv.pdf>
-                      <button type="button" class="btn btn-outline-dark mb-2">
-                        Print CV
-                      </button>
-                    </a>
-                  </li>
-                                  </ul>
-              </div>
-            </div>
+    <div class="container d-none d-lg-block d-xl-block">
+      <div class="row mt-5">
+        <div class="col-7 mt-5">
+          <h1>Peter YAO</h1>
+          <hr style="max-width: 200px; margin-left:0;" style="width:60%;"/>
+          <div class="my-3" id="icon-list">
+            <ul class="list-inline">
+                            <li class="list-inline-item">
+                <a href=https://linkedin.com/in/peterjyao>
+                  <button type="button" class="btn btn-outline-dark mb-2">
+                    LinkedIn
+                  </button>
+                </a>
+              </li>
+                            <li class="list-inline-item">
+                <a href=mailto:peterjyao@gmail.com>
+                  <button type="button" class="btn btn-outline-dark mb-2">
+                    Email
+                  </button>
+                </a>
+              </li>
+                            <li class="list-inline-item">
+                <a href=assets/cv.pdf>
+                  <button type="button" class="btn btn-outline-dark mb-2">
+                    Print CV
+                  </button>
+                </a>
+              </li>
+                          </ul>
           </div>
         </div>
-        <div class="d-flex flex-column vh-100 border-left"></div>
-        <div class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: scroll;">
-          <div class="my-5" id="content">
-            <div id="experience" class="section level2">
-            <h2>Experience</h2>
-            <p><strong>Lead Scientist</strong>, Nov 2020 - <br><em>Lonza AG</em>, Basel, Switzerland<br>Drug Product Services: pharmaceutical development studies for liqid and lyophilized biologic drug products. Laboratory-scale modeling of fill/finish processes.<br><br><strong>Senior Associate Scientist</strong>, Jan 2018 - Oct 2020<br><em>Janssen Pharmaceuticals</em>, Schaffhausen, Switzerland<br>Large Molecule Process Development: aseptic fill/finish processes for new product introductions and technical transfers at Schaffhausen facility.<br><br><strong>Senior Associate Scientist</strong>, Oct 2015 - Dec 2017<br><em>Janssen Pharmaceuticals</em>, Schaffhausen, Switzerland<br>Small Molecule API: support for late-stage chemical development of small molecule APIs and intermediates. Crystallisation process development and process analytical technologies.<br><br><strong>Research Scientist</strong>, Jan 2008 - Aug 2013<br><em>Bristol-Myers Squibb</em>, New Brunswick (NJ), USA<br>Chemical Development: support for early-stage chemical development of small molecule APIs and intermediates. Synthetic route evaluation. Enabling syntheses to deliver clinical material.</p>
-            </div>
-            <div id="education" class="section level2">
-            <h2>Education</h2>
-            <p><strong>MS Chemistry</strong>, 2007<br><em>University of Illinois at Urbana-Champaign</em>, Illinois, USA<br>Lewis Base Activation of Lewis Acids: Iodocyclization and the Mechanism of the Aldol Reaction<br><br><strong>BS Chemical Engineering</strong>, 2004<br><em>Case Western Reserve University</em>, Ohio, USA<br></p>
-            </div>
-            <div id="languages" class="section level2">
-            <h2>Languages</h2>
-            <p><em>English</em>, Native<br><em>French</em>, B2<br><em>German</em>, B1</p>
-            </div>
+
+        <div class="col mr-4 mt-5">
+          <img src="sigridur.jpg" style="height:15rem" class="rounded float-right">
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col">
+          <div id="experience" class="section level3">
+          <h3>Experience</h3>
+          <p><strong>Lead Scientist</strong>  |  Nov 2020 - <br><em>Lonza AG</em>  |  Basel, Switzerland<br>Drug Product Services: pharmaceutical development studies for liqid and lyophilized biologic drug products. Laboratory-scale modeling of fill/finish processes.<br><br><strong>Senior Associate Scientist</strong>  |  Jan 2018 - Oct 2020<br><em>Janssen Pharmaceuticals</em>  |  Schaffhausen, Switzerland<br>Large Molecule Process Development: aseptic fill/finish processes for new product introductions and technical transfers at Schaffhausen facility.<br><br><strong>Senior Associate Scientist</strong>  |  Oct 2015 - Dec 2017<br><em>Janssen Pharmaceuticals</em>  |  Schaffhausen, Switzerland<br>Small Molecule API: support for late-stage chemical development of small molecule APIs and intermediates. Crystallisation process development and process analytical technologies.<br><br><strong>Research Scientist</strong>  |  Jan 2008 - Aug 2013<br><em>Bristol-Myers Squibb</em>  |  New Brunswick (NJ), USA<br>Chemical Development: support for early-stage chemical development of small molecule APIs and intermediates. Synthetic route evaluation. Enabling syntheses to deliver clinical material.</p>
+          </div>
+          <div id="education" class="section level3">
+          <h3>Education</h3>
+          <p><strong>MS Chemistry</strong>  |  2007<br><em>University of Illinois at Urbana-Champaign</em>  |  Illinois, USA<br>Lewis Base Activation of Lewis Acids: Iodocyclization and the Mechanism of the Aldol Reaction<br><br><strong>BS Chemical Engineering</strong>  |  2004<br><em>Case Western Reserve University</em>  |  Ohio, USA<br></p>
+          </div>
+          <div id="languages" class="section level3">
+          <h3>Languages</h3>
+          <p><em>English</em>: Native  |  <em>French</em>: B2  |  <em>German</em>: B1</p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container-flex min-vh-100 d-block d-lg-none d-xl-none">
+    <div class="container d-block d-lg-none d-xl-none">
       <div class="d-flex flex-row justify-content-center">
         <div class="d-flex flex-col">
           <div class="mx-auto">
             <div class="p-3 mt-3 text-center">
-              <img src=assets/peter.png style="height:15rem" class="rounded">
+              <img src="sigridur.jpg" style="height:15rem" class="rounded">
             </div>
             <div class="p-2 text-center">
               <h1>Peter YAO</h1>
@@ -486,35 +489,35 @@
               <div class="col-8 p-1 text-center">
                 <div class="list-group">
                                     <a href=https://linkedin.com/in/peterjyao>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    <button type="button" class="list-group-item list-group-item-action my-1 rounded" style="background-color: #f5e9dd; color: black;border-color: black;">
                       LinkedIn
                     </button>
                   </a>
                                     <a href=mailto:peterjyao@gmail.com>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    <button type="button" class="list-group-item list-group-item-action my-1 rounded" style="background-color: #f5e9dd; color: black;border-color: black;">
                       Email
                     </button>
                   </a>
                                     <a href=assets/cv.pdf>
-                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                    <button type="button" class="list-group-item list-group-item-action my-1 rounded" style="background-color: #f5e9dd; color: black;border-color: black;">
                       Print CV
                     </button>
                   </a>
                                   </div>
               </div>
             </div>
-            <div class="p pt-4 px-5">
-              <div id="experience" class="section level2">
-              <h2>Experience</h2>
-              <p><strong>Lead Scientist</strong>, Nov 2020 - <br><em>Lonza AG</em>, Basel, Switzerland<br>Drug Product Services: pharmaceutical development studies for liqid and lyophilized biologic drug products. Laboratory-scale modeling of fill/finish processes.<br><br><strong>Senior Associate Scientist</strong>, Jan 2018 - Oct 2020<br><em>Janssen Pharmaceuticals</em>, Schaffhausen, Switzerland<br>Large Molecule Process Development: aseptic fill/finish processes for new product introductions and technical transfers at Schaffhausen facility.<br><br><strong>Senior Associate Scientist</strong>, Oct 2015 - Dec 2017<br><em>Janssen Pharmaceuticals</em>, Schaffhausen, Switzerland<br>Small Molecule API: support for late-stage chemical development of small molecule APIs and intermediates. Crystallisation process development and process analytical technologies.<br><br><strong>Research Scientist</strong>, Jan 2008 - Aug 2013<br><em>Bristol-Myers Squibb</em>, New Brunswick (NJ), USA<br>Chemical Development: support for early-stage chemical development of small molecule APIs and intermediates. Synthetic route evaluation. Enabling syntheses to deliver clinical material.</p>
+            <div class="mt-4 mb-5 mx-2">
+              <div id="experience" class="section level3">
+              <h3>Experience</h3>
+              <p><strong>Lead Scientist</strong>  |  Nov 2020 - <br><em>Lonza AG</em>  |  Basel, Switzerland<br>Drug Product Services: pharmaceutical development studies for liqid and lyophilized biologic drug products. Laboratory-scale modeling of fill/finish processes.<br><br><strong>Senior Associate Scientist</strong>  |  Jan 2018 - Oct 2020<br><em>Janssen Pharmaceuticals</em>  |  Schaffhausen, Switzerland<br>Large Molecule Process Development: aseptic fill/finish processes for new product introductions and technical transfers at Schaffhausen facility.<br><br><strong>Senior Associate Scientist</strong>  |  Oct 2015 - Dec 2017<br><em>Janssen Pharmaceuticals</em>  |  Schaffhausen, Switzerland<br>Small Molecule API: support for late-stage chemical development of small molecule APIs and intermediates. Crystallisation process development and process analytical technologies.<br><br><strong>Research Scientist</strong>  |  Jan 2008 - Aug 2013<br><em>Bristol-Myers Squibb</em>  |  New Brunswick (NJ), USA<br>Chemical Development: support for early-stage chemical development of small molecule APIs and intermediates. Synthetic route evaluation. Enabling syntheses to deliver clinical material.</p>
               </div>
-              <div id="education" class="section level2">
-              <h2>Education</h2>
-              <p><strong>MS Chemistry</strong>, 2007<br><em>University of Illinois at Urbana-Champaign</em>, Illinois, USA<br>Lewis Base Activation of Lewis Acids: Iodocyclization and the Mechanism of the Aldol Reaction<br><br><strong>BS Chemical Engineering</strong>, 2004<br><em>Case Western Reserve University</em>, Ohio, USA<br></p>
+              <div id="education" class="section level3">
+              <h3>Education</h3>
+              <p><strong>MS Chemistry</strong>  |  2007<br><em>University of Illinois at Urbana-Champaign</em>  |  Illinois, USA<br>Lewis Base Activation of Lewis Acids: Iodocyclization and the Mechanism of the Aldol Reaction<br><br><strong>BS Chemical Engineering</strong>  |  2004<br><em>Case Western Reserve University</em>  |  Ohio, USA<br></p>
               </div>
-              <div id="languages" class="section level2">
-              <h2>Languages</h2>
-              <p><em>English</em>, Native<br><em>French</em>, B2<br><em>German</em>, B1</p>
+              <div id="languages" class="section level3">
+              <h3>Languages</h3>
+              <p><em>English</em>: Native  |  <em>French</em>: B2  |  <em>German</em>: B1</p>
               </div>
             </div>
         </div>
@@ -527,10 +530,10 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-      <!--radix_placeholder_site_after_body-->
-      <!--/radix_placeholder_site_after_body-->
-      <!--radix_placeholder_navigation_after_body-->
-      <!--/radix_placeholder_navigation_after_body-->
-  
+          <!--radix_placeholder_site_after_body-->
+          <!--/radix_placeholder_site_after_body-->
+          <!--radix_placeholder_navigation_after_body-->
+          <!--/radix_placeholder_navigation_after_body-->
+    
   </body>
 </html>
