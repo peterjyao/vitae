@@ -1,49 +1,71 @@
 ---
-title: About Me
+title: Peter YAO
 image: "assets/peter.png"
 links:
   - label: LinkedIn
     url: "https://linkedin.com/in/peterjyao"
   - label: Email
     url: "mailto:peterjyao@gmail.com"
-output:
-  postcards::trestles
+  - label: Print CV
+    url: "assets/cv.pdf"
+output: postcards::trestles
 site: distill::distill_website
 ---
- 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, results = "asis")
+```
+
+```{r imports}
+library("glue")
+```
+
+```{r data}
+data_source_root <- "https://raw.githubusercontent.com/peterjyao/cv/main/data"
+
+experience <- read.csv(url(glue("{data_source_root}/experience.csv")))
+education <- read.csv(url(glue("{data_source_root}/education.csv")))
+languages <- read.csv(url(glue("{data_source_root}/languages.csv")))
+```
+
 ## Experience
 
-* Lead Scientist, Drug Product Services, Lonza AG, Basel (Nov 2020 - present)
-<!---
-    - Lonza AG (Basel, Switzerland)
-    - November 2020 - present
-    - *description*
---->
+```{r experience}
+experience$dates <- gsub("\'", "20", experience$dates) 
+experience$dates <- gsub("-", " - ", experience$dates) 
 
-* Senior Associate Scientist, Large Molecule Drug Product Development, Janssen Pharmaceuticals, Schaffhausen (Jan 2018 - Oct 2020)
-<!---
-    - Janssen Pharmaceuticals (Schaffhausen, Switzerland)
-    - January 2018 - October 2020
-    - Process development and modeling of aseptic fill/finish processes. Collaboration with manufacturing colleagues to address production problems and identify root causes. Subject matter expertise in sterile filtration with lab-scale simulation.
---->
- 
-* Senior Associate Scientist, Small Molecule Chemical Development, Janssen Pharmaceuticals, Schaffhausen (Nov 2015 - Dec 2017)
-<!---
-    - Janssen Pharmaceuticals (Schaffhausen, Switzerland) 
-    - November 2015 - December 2017
-    - Developed expertise in using process analytical technology (React-IR, FBRM, PVM) to probe reaction mechanisms and follow crystallizations. Designed crystallization processes to deliver high quality product with desired purity, yield, and polymorphism control. Investigated reaction mechanisms to aid in process design and documentation for filing with health authorities.
---->
+experience$description_formatted <- glue(
+    .envir = experience,
+    "**{role}**, {dates}",
+    "*{org}*, {place}",
+    "{description}",
+    .sep = "<br>"
+  )
 
-* Research Scientist, Chemical Process Development, Bristol-Myers Squibb, New Brunswick (Jan 2008 - Aug 2013)
-<!---
-    - Bristol-Myers Squibb
-    - January 2008 - August 2013
-    - Developed alternative and efficient processes for various drug candidates and intermediates. Optimized process used in campaigns (5 kg to 130 kg) to deliver materials for Phase II clinical trials under tight timelines. Collaborated on diverse multi-functional teams to achieve multiple end-to-end objectives across a variety of projects.
---->
+cat(paste(experience$description_formatted, collapse = "<br><br>"))
+```
 
 ## Education
 
-* MS Chemistry, University of Illinois at Urbana-Champaign, 2007
-* BS Chemical Engineering, Case Western Reserve University, 2004
-* BS Polymer Science and Engineering, Case Western Reserve University, 2004
+```{r education}
+education$description_formatted <- glue(
+    .envir = education,
+    "**{degree}**, {dates}",
+    "*{institution}*, {place}",
+    "{thesis}",
+    .sep = "<br>"
+  )
 
+cat(paste(education$description_formatted, collapse = "<br><br>"))
+```
+
+## Languages
+
+```{r languages}
+languages$description_formatted <- glue(
+    .envir = languages,
+    "*{language}*, {level}"
+  )
+
+cat(paste(languages$description_formatted, collapse = "<br>"))
+```
