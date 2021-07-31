@@ -1,4 +1,5 @@
 ---
-title: "Blog -- coming soon"  # any name you want here
+title: "Blog"  # any name you want here
+site: distill::distill_website
 listing: posts # do this exactly
 ---

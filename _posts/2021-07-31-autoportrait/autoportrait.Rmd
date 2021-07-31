@@ -6,6 +6,8 @@ date: 07-31-2021
 output:
   distill::distill_article:
     self_contained: false
+categories:
+  - distill
 ---
 
 ```{r setup, include=FALSE}
