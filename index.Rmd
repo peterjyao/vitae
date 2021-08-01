@@ -17,15 +17,19 @@ knitr::opts_chunk$set(echo = FALSE, results = "asis")
 ```
 
 ```{r imports}
-library("glue")
+# library("glue")
 ```
 
 ```{r data}
 data_source_root <- "https://raw.githubusercontent.com/peterjyao/cv/main/data"
 
-experience <- read.csv(url(glue("{data_source_root}/experience.csv")))
-education <- read.csv(url(glue("{data_source_root}/education.csv")))
-languages <- read.csv(url(glue("{data_source_root}/languages.csv")))
+# experience <- read.csv(url(glue("{data_source_root}/experience.csv")))
+# education <- read.csv(url(glue("{data_source_root}/education.csv")))
+# languages <- read.csv(url(glue("{data_source_root}/languages.csv")))
+
+experience <- read.csv(url(paste0(data_source_root, "/", "experience.csv")))
+education <- read.csv(url(paste0(data_source_root, "/", "education.csv")))
+languages <- read.csv(url(paste0(data_source_root, "/", "languages.csv")))
 ```
 
 ### Experience
@@ -34,13 +38,21 @@ languages <- read.csv(url(glue("{data_source_root}/languages.csv")))
 experience$dates <- gsub("\'", "20", experience$dates) 
 experience$dates <- gsub("-", " - ", experience$dates) 
 
-experience$description_formatted <- glue(
-    .envir = experience,
-    "**{role}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
-    "*{org}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
-    "{description}",
-    .sep = "<br>"
-  )
+# experience$description_formatted <- glue(
+#     .envir = experience,
+#     "**{role}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
+#     "*{org}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
+#     "{description}",
+#     .sep = "<br>"
+#   )
+
+experience$description_formatted <- 
+    with(
+      experience,
+      paste0(
+        "**", role, "**&nbsp;&nbsp;|&nbsp;&nbsp;", dates, "<br>",
+        "*", org, "*&nbsp;&nbsp;|&nbsp;&nbsp;", place, "<br>",
+        description))
 
 cat(paste(experience$description_formatted, collapse = "<br><br>"))
 ```
@@ -48,13 +60,21 @@ cat(paste(experience$description_formatted, collapse = "<br><br>"))
 ### Education
 
 ```{r education}
-education$description_formatted <- glue(
-    .envir = education,
-    "**{degree}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
-    "*{institution}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
-    "{thesis}",
-    .sep = "<br>"
-  )
+# education$description_formatted <- glue(
+#     .envir = education,
+#     "**{degree}**&nbsp;&nbsp;|&nbsp;&nbsp;{dates}",
+#     "*{institution}*&nbsp;&nbsp;|&nbsp;&nbsp;{place}",
+#     "{thesis}",
+#     .sep = "<br>"
+#   )
+
+education$description_formatted <- 
+    with(
+      education,
+      paste0(
+        "**", degree, "**&nbsp;&nbsp;|&nbsp;&nbsp;", dates, "<br>",
+        "*", institution, "*&nbsp;&nbsp;|&nbsp;&nbsp;", place, "<br>",
+        thesis))
 
 cat(paste(education$description_formatted, collapse = "<br><br>"))
 ```
@@ -62,9 +82,16 @@ cat(paste(education$description_formatted, collapse = "<br><br>"))
 ### Languages
 
 ```{r languages}
-languages$description_formatted <- glue(
-    .envir = languages,
-    "*{language}*: {level}"
+# languages$description_formatted <- glue(
+#     .envir = languages,
+#     "*{language}*: {level}"
+#   )
+
+languages$description_formatted <-
+  with(
+    languages,
+    paste0("*", language, "*: ", level
+    )
   )
 
 cat(paste(languages$description_formatted, collapse = "&nbsp;&nbsp;|&nbsp;&nbsp;"))
