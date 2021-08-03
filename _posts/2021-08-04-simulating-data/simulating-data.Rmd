@@ -1,0 +1,62 @@
+---
+title: "simulating data"
+description: |
+  Attempts to simulate data for a later post.
+author: Peter Yao
+date: 08-04-2021
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - work-in-progress
+---
+
+Fill this in
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r imports}
+library("ggplot2")
+```
+
+
+```{r sim, echo=TRUE}
+set.seed(100)
+
+make_data <- function(n = 100L,
+                      m = 10L,
+                      p = 0.15,
+                      rmin = 0.2,
+                      rmax = 0.8,
+                      sd_noise = 0.02,
+                      del_frac = 0.05) {
+
+  sim <- data.frame(
+    x = seq(m, n * m, by = m),
+    y = 1 - rbinom(n, 1, p) * (abs(runif(n, min = rmin, max = rmax))
+    )
+  )
+  
+  meas <- data.frame(
+    x = 0:(n * m),
+    noise = rnorm((n * m) + 1, mean = 0, sd = sd_noise)
+  )
+  
+  sim_noisy <- merge(sim, meas, all = TRUE)
+  sim_noisy$y_noisy <- rowSums(sim_noisy[, c("y", "noise")], na.rm = TRUE)
+  sim_noisy$cumul_noisy <- cumsum(sim_noisy$y_noisy)
+
+  del_nrows = as.integer(n * m * del_frac)
+  del_rows <- sample(n * m, del_nrows, replace = FALSE)
+  
+  sim_noisy[-del_rows, ]
+}
+
+sim_dat <- make_data(n = 20, m = 4)
+
+# plot(sim_dat[, c("x", "cumul_noisy")])
+ggplot2::ggplot(sim_dat, ggplot2::aes(x = x, y = cumul_noisy)) +
+  ggplot2::geom_point()
+```
