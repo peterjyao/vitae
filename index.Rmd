@@ -32,6 +32,11 @@ education <- read.csv(url(paste0(data_source_root, "/", "education.csv")))
 languages <- read.csv(url(paste0(data_source_root, "/", "languages.csv")))
 ```
 
+<p style="margin-bottom:2cm;"></p>
+
+:::: {style="display: flex;"}
+
+::: {}
 ### Experience
 
 ```{r experience}
@@ -46,17 +51,24 @@ experience$dates <- gsub("-", " - ", experience$dates)
 #     .sep = "<br>"
 #   )
 
+experience$description_short <- sapply(
+  strsplit(experience$description, ":"), 
+  function(x) x[1]
+  )
+  
 experience$description_formatted <- 
     with(
       experience,
       paste0(
         "**", role, "**&nbsp;&nbsp;|&nbsp;&nbsp;", dates, "<br>",
         "*", org, "*&nbsp;&nbsp;|&nbsp;&nbsp;", place, "<br>",
-        description))
+        description_short))
 
 cat(paste(experience$description_formatted, collapse = "<br><br>"))
 ```
+:::
 
+::: {}
 ### Education
 
 ```{r education}
@@ -73,11 +85,12 @@ education$description_formatted <-
       education,
       paste0(
         "**", degree, "**&nbsp;&nbsp;|&nbsp;&nbsp;", dates, "<br>",
-        "*", institution, "*&nbsp;&nbsp;|&nbsp;&nbsp;", place, "<br>",
-        thesis))
+        "*", institution, "*"))
 
 cat(paste(education$description_formatted, collapse = "<br><br>"))
 ```
+
+<br>
 
 ### Languages
 
@@ -96,3 +109,6 @@ languages$description_formatted <-
 
 cat(paste(languages$description_formatted, collapse = "&nbsp;&nbsp;|&nbsp;&nbsp;"))
 ```
+:::
+
+::::
