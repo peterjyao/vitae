@@ -35,9 +35,8 @@ make_data <- function(n = 100L,
 
   sim <- data.frame(
     x = seq(m, n * m, by = m),
-    y = 1 - rbinom(n, 1, p) * (abs(runif(n, min = rmin, max = rmax))
+    y = 1 - rbinom(n, 1, p) * runif(n, min = rmin, max = rmax)
     )
-  )
   
   meas <- data.frame(
     x = 0:(n * m),
