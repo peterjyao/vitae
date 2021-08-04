@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["simulating-data_files/anchor-4.2.2/anchor.min.js","simulating-data_files/bowser-1.9.3/bowser.min.js","simulating-data_files/distill-2.2.21/template.v2.js","simulating-data_files/figure-html5/sim-1.png","simulating-data_files/header-attrs-2.9/header-attrs.js","simulating-data_files/jquery-1.11.3/jquery.min.js","simulating-data_files/popper-2.6.0/popper.min.js","simulating-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","simulating-data_files/tippy-6.2.7/tippy-light-border.css","simulating-data_files/tippy-6.2.7/tippy.css","simulating-data_files/tippy-6.2.7/tippy.umd.min.js","simulating-data_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["simulating-data_files/anchor-4.2.2/anchor.min.js","simulating-data_files/bowser-1.9.3/bowser.min.js","simulating-data_files/distill-2.2.21/template.v2.js","simulating-data_files/figure-html5/sim-1.png","simulating-data_files/figure-html5/step-1.png","simulating-data_files/header-attrs-2.9/header-attrs.js","simulating-data_files/jquery-1.11.3/jquery.min.js","simulating-data_files/popper-2.6.0/popper.min.js","simulating-data_files/tippy-6.2.7/tippy-bundle.umd.min.js","simulating-data_files/tippy-6.2.7/tippy-light-border.css","simulating-data_files/tippy-6.2.7/tippy.css","simulating-data_files/tippy-6.2.7/tippy.umd.min.js","simulating-data_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -1855,10 +1855,29 @@ body {
 </div>
 
 <div class="d-article">
-<p>Fill this in</p>
+<p>I want to describe an old project that required some interesting data analysis but first I need to find a way to create some artificial data. I basically need data from a step function, with some noise added. Each step has to have some “measurement” points in the middle. At first I tried to make my own step function in a naïve way, as shown below. I did not realise literally until I started writing this post and wrote a function called <code>step_func</code> that R has a built-in function <code>stats::stepfun</code>, which I need to learn more about.</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>step_func</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>=</span> <span class='fl'>100L</span>, <span class='va'>m</span> <span class='op'>=</span> <span class='fl'>10L</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='va'>n</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>m</span><span class='op'>)</span><span class='op'>)</span>
+  
+  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+    x <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='op'>(</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span> <span class='op'>)</span><span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>, 
+    y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>as.vector</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+
+<span class='va'>step_dat</span> <span class='op'>&lt;-</span> <span class='fu'>step_func</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, m <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
+<span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>step_dat</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="simulating-data_files/figure-html5/step-1.png" width="624" /></p>
+</div>
+<p>This is fine but I also need occasionally lower steps. It turned out one way to do this is to essentially simulate the underlying process that I was studying, by using a cumulative sum, with the step height sometimes decreased according to a probability in <code>rbinom</code>. I also added noise in the function below, and drop some of the “measurement” points randomly.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>
@@ -1868,7 +1887,8 @@ body {
                       <span class='va'>p</span> <span class='op'>=</span> <span class='fl'>0.15</span>,
                       <span class='va'>rmin</span> <span class='op'>=</span> <span class='fl'>0.2</span>,
                       <span class='va'>rmax</span> <span class='op'>=</span> <span class='fl'>0.8</span>,
-                      <span class='va'>sd_noise</span> <span class='op'>=</span> <span class='fl'>0.02</span>,
+                      <span class='va'>sd_x</span> <span class='op'>=</span> <span class='fl'>0.02</span>,
+                      <span class='va'>sd_y</span> <span class='op'>=</span> <span class='fl'>0.02</span>,
                       <span class='va'>del_frac</span> <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span> <span class='op'>{</span>
 
   <span class='va'>sim</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
@@ -1878,23 +1898,24 @@ body {
   
   <span class='va'>meas</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
     x <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span><span class='op'>)</span>,
-    noise <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='va'>sd_noise</span><span class='op'>)</span>
+    noise_x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='va'>sd_x</span><span class='op'>)</span>,
+    noise_y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='va'>sd_y</span><span class='op'>)</span>
   <span class='op'>)</span>
   
   <span class='va'>sim_noisy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/merge.html'>merge</a></span><span class='op'>(</span><span class='va'>sim</span>, <span class='va'>meas</span>, all <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-  <span class='va'>sim_noisy</span><span class='op'>$</span><span class='va'>y_noisy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>sim_noisy</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='st'>"noise"</span><span class='op'>)</span><span class='op'>]</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='va'>sim_noisy</span><span class='op'>$</span><span class='va'>y_noisy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>sim_noisy</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"y"</span>, <span class='st'>"noise_y"</span><span class='op'>)</span><span class='op'>]</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+  <span class='va'>sim_noisy</span><span class='op'>$</span><span class='va'>x_noisy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/colSums.html'>rowSums</a></span><span class='op'>(</span><span class='va'>sim_noisy</span><span class='op'>[</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"noise_x"</span><span class='op'>)</span><span class='op'>]</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
   <span class='va'>sim_noisy</span><span class='op'>$</span><span class='va'>cumul_noisy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cumsum.html'>cumsum</a></span><span class='op'>(</span><span class='va'>sim_noisy</span><span class='op'>$</span><span class='va'>y_noisy</span><span class='op'>)</span>
 
   <span class='va'>del_nrows</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span> <span class='op'>*</span> <span class='va'>del_frac</span><span class='op'>)</span>
   <span class='va'>del_rows</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span>, <span class='va'>del_nrows</span>, replace <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
   
-  <span class='va'>sim_noisy</span><span class='op'>[</span><span class='op'>-</span><span class='va'>del_rows</span>, <span class='op'>]</span>
+  <span class='va'>sim_noisy</span><span class='op'>[</span><span class='op'>-</span><span class='va'>del_rows</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x_noisy"</span>, <span class='st'>"cumul_noisy"</span><span class='op'>)</span><span class='op'>]</span>
 <span class='op'>}</span>
 
 <span class='va'>sim_dat</span> <span class='op'>&lt;-</span> <span class='fu'>make_data</span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>20</span>, m <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
 
-<span class='co'># plot(sim_dat[, c("x", "cumul_noisy")])</span>
-<span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>sim_dat</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>cumul_noisy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>sim_dat</span>, <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x_noisy</span>, y <span class='op'>=</span> <span class='va'>cumul_noisy</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>

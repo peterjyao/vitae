@@ -11,18 +11,41 @@ categories:
   - work-in-progress
 ---
 
-Fill this in
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r imports}
+I want to describe an old project that required some interesting data analysis but first I need to find a way to create some artificial data.
+I basically need data from a step function, with some noise added.
+Each step has to have some "measurement" points in the middle.
+At first I tried to make my own step function in a naïve way, as shown below.
+I did not realise literally until I started writing this post and wrote a function called `step_func` that R has a built-in function `stats::stepfun`, which I need to learn more about.
+
+```{r imports, echo=FALSE}
 library("ggplot2")
 ```
 
 
-```{r sim, echo=TRUE}
+```{r step}
+step_func <- function(n = 100L, m = 10L) {
+  dat <- sapply(1:n, function(x) rep(x, m))
+  
+  data.frame(
+    x = 0:((n * m )- 1), 
+    y = as.vector(dat)
+  )
+}
+
+step_dat <- step_func(n = 20, m = 4)
+ggplot2::ggplot(step_dat, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_point()
+```
+
+This is fine but I also need occasionally lower steps.
+It turned out one way to do this is to essentially simulate the underlying process that I was studying, by using a cumulative sum, with the step height sometimes decreased according to a probability in `rbinom`.
+I also added noise in the function below, and drop some of the "measurement" points randomly.
+
+```{r sim}
 set.seed(100)
 
 make_data <- function(n = 100L,
@@ -30,7 +53,8 @@ make_data <- function(n = 100L,
                       p = 0.15,
                       rmin = 0.2,
                       rmax = 0.8,
-                      sd_noise = 0.02,
+                      sd_x = 0.02,
+                      sd_y = 0.02,
                       del_frac = 0.05) {
 
   sim <- data.frame(
@@ -40,22 +64,23 @@ make_data <- function(n = 100L,
   
   meas <- data.frame(
     x = 0:(n * m),
-    noise = rnorm((n * m) + 1, mean = 0, sd = sd_noise)
+    noise_x = rnorm((n * m) + 1, mean = 0, sd = sd_x),
+    noise_y = rnorm((n * m) + 1, mean = 0, sd = sd_y)
   )
   
   sim_noisy <- merge(sim, meas, all = TRUE)
-  sim_noisy$y_noisy <- rowSums(sim_noisy[, c("y", "noise")], na.rm = TRUE)
+  sim_noisy$y_noisy <- rowSums(sim_noisy[, c("y", "noise_y")], na.rm = TRUE)
+  sim_noisy$x_noisy <- rowSums(sim_noisy[, c("x", "noise_x")], na.rm = TRUE)
   sim_noisy$cumul_noisy <- cumsum(sim_noisy$y_noisy)
 
   del_nrows = as.integer(n * m * del_frac)
   del_rows <- sample(n * m, del_nrows, replace = FALSE)
   
-  sim_noisy[-del_rows, ]
+  sim_noisy[-del_rows, c("x_noisy", "cumul_noisy")]
 }
 
 sim_dat <- make_data(n = 20, m = 4)
 
-# plot(sim_dat[, c("x", "cumul_noisy")])
-ggplot2::ggplot(sim_dat, ggplot2::aes(x = x, y = cumul_noisy)) +
+ggplot2::ggplot(sim_dat, ggplot2::aes(x = x_noisy, y = cumul_noisy)) +
   ggplot2::geom_point()
 ```
