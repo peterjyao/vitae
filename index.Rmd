@@ -34,7 +34,11 @@ languages <- read.csv(url(paste0(data_source_root, "/", "languages.csv")))
 
 <p style="margin-bottom:2cm;"></p>
 
+<!---
 :::: {style="display: flex;"}
+--->
+
+:::: {style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;"}
 
 ::: {}
 ### Experience
@@ -60,8 +64,8 @@ experience$description_formatted <-
     with(
       experience,
       paste0(
-        "**", role, "**&nbsp;&nbsp;|&nbsp;&nbsp;", dates, "<br>",
-        "*", org, "*&nbsp;&nbsp;|&nbsp;&nbsp;", place, "<br>",
+        "**", role, "**<br>", dates, "<br>",
+        "*", org, "*<br>", place, "<br>",
         description_short))
 
 cat(paste(experience$description_formatted, collapse = "<br><br>"))
@@ -84,7 +88,7 @@ education$description_formatted <-
     with(
       education,
       paste0(
-        "**", degree, "**&nbsp;&nbsp;|&nbsp;&nbsp;", dates, "<br>",
+        "**", degree, "**<br>", dates, "<br>",
         "*", institution, "*"))
 
 cat(paste(education$description_formatted, collapse = "<br><br>"))
@@ -107,7 +111,7 @@ languages$description_formatted <-
     )
   )
 
-cat(paste(languages$description_formatted, collapse = "&nbsp;&nbsp;|&nbsp;&nbsp;"))
+cat(paste(languages$description_formatted, collapse = "<br>"))
 ```
 :::
 
