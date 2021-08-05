@@ -6,6 +6,8 @@ links:
     url: "https://linkedin.com/in/peterjyao"
   - label: Email
     url: "mailto:peterjyao@gmail.com"
+  - label: Twitter
+    url: "https://www.twitter.com/peterjyao"
   - label: Print CV
     url: "assets/cv.pdf"
 output: postcards::solana
@@ -28,9 +30,9 @@ header_aboutme <- header[header$parameter == "aboutme", "value"]
 
 <p style="margin-bottom:2cm;"></p>
 
-:::: {style="display: grid; grid-template-columns: 4fr 3fr; grid-column-gap: 5px;"}
+::::: {style="display: grid; grid-template-columns: 4fr 3fr; grid-column-gap: 5px;"}
 
-::: {}
+:::: {}
 ### Experience
 
 ```{r experience}
@@ -52,18 +54,19 @@ experience$description_formatted <-
 
 cat(paste(experience$description_formatted, collapse = "<br><br>"))
 ```
-:::
+::::
+
+:::: {style="display: grid; grid-template-rows: auto auto auto; align-content: space-between"}
 
 ::: {}
-
 ### About Me
 
 ```{r aboutme}
 cat(header_aboutme)
 ```
+:::
 
-<br>
-
+::: {}
 ### Education
 
 ```{r education}
@@ -77,9 +80,9 @@ education$description_formatted <-
 
 cat(paste(education$description_formatted, collapse = "<br><br>"))
 ```
+:::
 
-<br>
-
+::: {}
 ### Languages
 
 ```{r languages}
@@ -96,3 +99,5 @@ cat(paste(languages$description_formatted, collapse = "<br>"))
 :::
 
 ::::
+
+:::::
