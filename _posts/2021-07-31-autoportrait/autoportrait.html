@@ -1455,7 +1455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"autoportrait","description":"Documenting how this blog was set up","authors":[{"author":"Peter Yao","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-07-31T00:00:00.000+02:00","citationText":"Yao, 2021"}
+{"title":"autoportrait","description":"Documenting how this blog was set up","authors":[{"author":"Peter Yao","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-07-31T00:00:00.000+00:00","citationText":"Yao, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1494,18 +1494,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span>: <span class="st">&quot;Roboto Slab&quot;</span><span class="op">;</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">#f5e9dd</span><span class="op">;</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<style type="text/css">
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto Slab";
-}
-
-body {
-  font-family: "Roboto Slab";
-  background-color: #f5e9dd;
-}
-</style>
 </div>
 <p>At the moment there is a slight difference in how the navbar looks on the pages. Hopefully I can figure out how to fix that at some point.</p>
 <p>I wanted to try to use the same data source I used for <a href="https://peterjyao.github.io/vitae/assets/cv.pdf">my CV</a>, which I partially made using the <a href="https://github.com/mitchelloharawild/vitae/">vitae</a> package–I say partially, because I ended up fine tuning it directly in the LaTeX file. It’s a bit hacky but works. Below is for the “Experience” section.</p>
@@ -1534,6 +1522,7 @@ body {
 </div>
 </div>
 <p>I used similar code for the “Education” and “Languages” section, so I should probably make a function out of it.</p>
+<p><em>Edit: I continually play around with the site colors as well as the formatting in the About page, so most of this description is outdated. Anyone really curious (i.e. no one) can check out the repository for the latest version.</em></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

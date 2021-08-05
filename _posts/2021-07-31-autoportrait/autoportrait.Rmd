@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE)
 This blog was set up following the instructions from [Alison Hill](https://distillery.rbind.io/posts/2021-03-16-postcards-distill/).
 To make the rest of the site match the [About Me](https://peterjyao.github.io/vitae/index.html) page better (created with the [postcards](https://github.com/seankross/postcards) package), I added a bit to the site `styles.css`, which I expect I will play with more in the future.
 
-```{css, echo=TRUE}
+```{css, echo=TRUE, eval=FALSE}
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,3 +60,6 @@ cat(paste(experience$description_formatted, collapse = "<br><br>"))
 ```
 
 I used similar code for the "Education" and "Languages" section, so I should probably make a function out of it.
+
+*Edit: I continually play around with the site colors as well as the formatting in the About page, so most of this description is outdated.
+Anyone really curious (i.e. no one) can check out the repository for the latest version.*

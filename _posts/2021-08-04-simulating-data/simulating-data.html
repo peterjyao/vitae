@@ -1455,7 +1455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"simulating data","description":"Attempts to simulate data for a later post.","authors":[{"author":"Peter Yao","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-08-04T00:00:00.000+02:00","citationText":"Yao, 2021"}
+{"title":"simulating data","description":"Attempts to simulate data for a later post.","authors":[{"author":"Peter Yao","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-08-04T00:00:00.000+00:00","citationText":"Yao, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1492,7 +1492,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='va'>n</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>m</span><span class='op'>)</span><span class='op'>)</span>
   
   <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-    x <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='op'>(</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span> <span class='op'>)</span><span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>, 
+    x <span class='op'>=</span> <span class='fl'>0</span><span class='op'>:</span><span class='op'>(</span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>m</span> <span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>, 
     y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/vector.html'>as.vector</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span>
   <span class='op'>)</span>
 <span class='op'>}</span>
@@ -1504,7 +1504,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="simulating-data_files/figure-html5/step-1.png" width="624" /></p>
 </div>
-<p>This is fine but I also need occasionally lower steps. It turned out one way to do this is to essentially simulate the underlying process that I was studying, by using a cumulative sum, with the step height sometimes decreased according to a probability in <code>rbinom</code>. I also added noise in the function below, and drop some of the “measurement” points randomly.</p>
+<p>This is fine but I also need occasionally lower steps. It turned out one way to do this is to essentially simulate the underlying process that I was studying, by using a cumulative sum, with the step height sometimes decreased according to a probability in <code>rbinom</code>. I also add noise in the function below, and drop some of the “measurement” points randomly.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>100</span><span class='op'>)</span>
