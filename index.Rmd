@@ -16,10 +16,6 @@ site: distill::distill_website
 knitr::opts_chunk$set(echo = FALSE, results = "asis")
 ```
 
-```{r imports}
-# library("glue")
-```
-
 ```{r data}
 data_source_root <- "data"
 
@@ -59,6 +55,7 @@ cat(paste(experience$description_formatted, collapse = "<br><br>"))
 :::
 
 ::: {}
+
 ### About Me
 
 ```{r aboutme}
